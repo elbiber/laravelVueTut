@@ -12,12 +12,12 @@
         <div
           v-for="(bookable, column) in bookablesInRow(row)"
           :key="'row' + row + column"
-          class="col"
+          class="col d-flex align-items-stretch"
         >
           <bookable-list-item
             :key="index"
             :item-title="bookable.title"
-            :item-content="bookable.content"
+            :item-description="bookable.description"
             :price="1000"
           />
         </div>
@@ -55,37 +55,10 @@ export default {
     },
     created() {
         this.loading = true
-        setTimeout(() => {
-            this.bookables=[
-                {
-                    title: 'Expensive Villa 1',
-                    content: 'Very Expensive Villa 1'
-                },
-                {
-                    title: 'Expensive Villa 2',
-                    content: 'Very Expensive Villa 2'
-                },
-                {
-                    title: 'Expensive Villa 3',
-                    content: 'Very Expensive Villa 3'
-                },                {
-                    title: 'Expensive Villa 1',
-                    content: 'Very Expensive Villa 1'
-                },
-                {
-                    title: 'Expensive Villa 2',
-                    content: 'Very Expensive Villa 2'
-                },
-                {
-                    title: 'Expensive Villa 3',
-                    content: 'Very Expensive Villa 3'
-                },                {
-                    title: 'Expensive Villa 1',
-                    content: 'Very Expensive Villa 1'
-                }
-            ]
+        const request = axios.get('/api/bookables').then(response => {
+            this.bookables = response.data
             this.loading = false
-        }, 500)
+        })
     },
     methods: {
         bookablesInRow(row) {

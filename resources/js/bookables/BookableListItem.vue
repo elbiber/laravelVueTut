@@ -1,9 +1,9 @@
 <template>
-  <div class="card">
+  <div class="card w-100">
     <div class="card-body">
       <h5>{{ itemTitle }}</h5>
       <p class="card-text">
-        {{ itemContent }}
+        {{ itemDescription }}
       </p>
       <p class="card-text">
         {{ price }}€
@@ -19,7 +19,7 @@ export default {
             type:  String,
             default: ''
         },
-        itemContent: {
+        itemDescription: {
             type:  String,
             default: ''
         },
