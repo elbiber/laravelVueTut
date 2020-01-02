@@ -1,22 +1,19 @@
 <template>
-    <div class="header" fixed="top">
-        <div class="left-side">
-            <h2 class="title">CSGO-ECOSIM</h2>
-            <nav>
-                <ul class="nav-links">
-                    <li v-for="link in links" v-bind:key="link.text">
-                    <router-link :to="link.route">{{ link.text }}</router-link>
-                    </li>
-                </ul>
-            </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <router-link class="navbar-brand mr-auto" :to="{name: 'dashboard'}">CSGO-ECOSIM</router-link>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" v-for="link in links" v-bind:key="link.text">
+                    <router-link  class="nav-link" :to="link.route">{{ link.text }}</router-link>
+                </li>
+            </ul>
         </div>
-        <div class="right-side">
-            <router-link v-if="isLoggedIn" to="/signin"><button v-on:click="logout">Sign out</button></router-link>
-            <router-link v-else to="/login"><button class="btn btn-primary">Sign in</button></router-link>
-            <router-link v-if="!isLoggedIn" to="/register"><button class="btn btn-primary">Sign Up</button></router-link>
-        </div>
-    </div>
-
+        <router-link class="btn nav-buttom" :to="{name: 'signin'}">Sign In</router-link>
+        <router-link class="btn nav-buttom" :to="{name: 'signup'}">Sign Up</router-link>
+    </nav>
 </template>
 
 <script>
