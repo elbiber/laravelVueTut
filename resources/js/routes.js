@@ -1,41 +1,36 @@
+
 import VueRouter from 'vue-router'
-import Simulator from './components/Simulator'
-import Items from './components/Items'
-import Dashboard from './components/Dashboard'
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
+import Basket from './basket/Basket'
+import Bookable from './bookable/Bookable'
+import Bookables from './bookables/Bookables'
+import Review from './review/Review'
 
 const routes = [
     {
         path: '/',
-        name: 'dashboard',
-        component: Dashboard
+        component: Bookables,
+        name: 'home'
     },
     {
-        path: '/simulator',
-        name: 'simulator',
-        component: Simulator
+        path: '/bookable/:id',
+        component: Bookable,
+        name: 'bookable'
     },
     {
-        path: '/items',
-        name: 'items',
-        component: Items
+        path: '/review/:id',
+        component: Review,
+        name: 'review'
     },
     {
-        path: '/signin',
-        name: 'signin',
-        component: SignIn
-    },
-    {
-        path: '/signup',
-        name: 'signup',
-        component: SignUp
+        path: '/basket',
+        component: Basket,
+        name: 'basket'
     }
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    routes // short for `routes: routes`
+    routes, // short for `routes: routes`
+    mode: 'history'
 })
 
 export default router
