@@ -14,12 +14,7 @@
           :key="'row' + row + column"
           class="col d-flex align-items-stretch"
         >
-          <bookable-list-item
-            :key="index"
-            :item-title="bookable.title"
-            :item-description="bookable.description"
-            :price="1000"
-          />
+          <bookable-list-item v-bind="bookable" />
         </div>
         <div
           v-for="p in placeholdersInRow(row)"
@@ -56,7 +51,7 @@ export default {
     created() {
         this.loading = true
         const request = axios.get('/api/bookables').then(response => {
-            this.bookables = response.data
+            this.bookables = response.data.data
             this.loading = false
         })
     },

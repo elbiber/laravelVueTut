@@ -17,10 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('bookables', function (Request $request) {
+Route::apiResource('/bookables', 'Api\BookableController')->only(['index', 'show']);
+
+/* Route::get('bookables', function (Request $request) {
     return App\Bookable::all();
 });
 
 Route::get('bookables/{id}', function (Request $request, $id) {
     return App\Bookable::findOrFail($id);
-});
+}); */
